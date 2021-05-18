@@ -87,6 +87,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
     initAccordion() {
       const thisProduct = this;
@@ -146,8 +147,15 @@
           const option = param.options[optionId];
           console.log(optionId, option);
 
-          // check if there is param with a name of paramId in formData and if it includes optionId
-          if(formData[paramId] && formData[paramId].includes(optionId)) {
+          // check if there is param with a name of paramId in formData and if it includes optionId (check if option is selected and save it to constant)
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
+          // find option image in images div
+          const optionImage = thisProduct.imageWrapper.querySelector('.'+paramId+'-'+optionId);
+          console.log('optionImage:', optionImage);
+
+          // if option is selected
+          if(optionSelected) {
             // check if the option is not default
             if(!option.default) {
               // add option price to price variable
@@ -158,6 +166,18 @@
             if(option.default) {
               // reduce price variable
               price -= option.price;
+            }
+          }
+
+          // if option has its image
+          if(optionImage) {
+            // if option is selected
+            if(optionSelected) {
+              // add class active to the option image
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+            } else {
+              // remove class active from the option image
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
         }
