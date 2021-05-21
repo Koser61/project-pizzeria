@@ -6,6 +6,7 @@
   const select = {
     templateOf: {
       menuProduct: '#template-menu-product',
+      cartProduct: '#template-cart-product',
     },
     containerOf: {
       menu: '#product-list',
@@ -50,7 +51,6 @@
       remove: '[href="#remove"]',
     },
   };
-
   const classNames = {
     menuProduct: {
       wrapperActive: 'active',
