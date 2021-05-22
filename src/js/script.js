@@ -93,7 +93,7 @@
 
       console.log('new product:', thisProduct);
     }
-    renderInMenu() {
+    renderInMenu(){
       const thisProduct = this;
 
       /* generate HTML based on template */
@@ -105,7 +105,7 @@
       /* add element to menu */
       menuContainer.appendChild(thisProduct.element);
     }
-    getElements() {
+    getElements(){
       const thisProduct = this;
     
       thisProduct.dom = {};
@@ -117,7 +117,7 @@
       thisProduct.dom.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
       thisProduct.dom.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
-    initAccordion() {
+    initAccordion(){
       const thisProduct = this;
 
       /* START: add event listener to clickable trigger on event click */
@@ -135,7 +135,7 @@
         thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
       });
     }
-    initAmountWidget() {
+    initAmountWidget(){
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.dom.amountWidgetElem);
@@ -143,7 +143,7 @@
         thisProduct.processOrder();
       });
     }
-    initOrderForm() {
+    initOrderForm(){
       const thisProduct = this;
       console.log('thisProduct:', thisProduct);
 
@@ -159,9 +159,10 @@
       thisProduct.dom.cartButton.addEventListener('click', function(event){
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addToCart();
       });
     }
-    processOrder() {
+    processOrder(){
       const thisProduct = this;
     
       // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
@@ -218,10 +219,68 @@
           }
         }
       }
+
+      thisProduct.priceSingle = price;
+
       /* multiply price by amount */
       price *= thisProduct.amountWidget.value;
+
       // update calculated price in the HTML
       thisProduct.dom.priceElem.innerHTML = price;
+    }
+    prepareCartProduct(){
+      const thisProduct = this;
+
+      const productSummary = {};
+      productSummary.id = thisProduct.id;
+      productSummary.name = thisProduct.data.name;
+      productSummary.amount = thisProduct.amountWidget.value;
+      productSummary.priceSingle = thisProduct.priceSingle;
+      productSummary.price = productSummary.priceSingle * productSummary.amount;
+      productSummary.params = thisProduct.prepareCartProductParams();
+
+      return productSummary;
+    }
+    prepareCartProductParams(){
+      const thisProduct = this;
+    
+      // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
+      const formData = utils.serializeFormToObject(thisProduct.dom.form);
+      const params = {};
+      console.log('formData', formData);
+    
+      // for every category (param)...
+      for(let paramId in thisProduct.data.params) {
+        // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
+        const param = thisProduct.data.params[paramId];
+
+        // create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}
+        params[paramId] = {
+          label: param.label,
+          options: {}
+        };
+        console.log(paramId, param);
+    
+        // for every option in this category
+        for(let optionId in param.options) {
+          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+          const option = param.options[optionId],
+            // check if there is param with a name of paramId in formData and if it includes optionId (check if option is selected and save it to constant)
+            optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+          console.log(optionId, option);
+
+          // if option is selected
+          if(optionSelected) {
+            params[paramId].options[optionId] = option.label;
+          }
+        }
+      }
+      return params;
+    }
+    addToCart(){
+      const thisProduct = this;
+
+      app.cart.add(thisProduct.prepareCartProduct());
     }
   }
   class AmountWidget {
@@ -292,6 +351,8 @@
       thisCart.dom = {};
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
+      console.log('product list:', thisCart.dom.productList);
     }
     initActions(){
       const thisCart = this;
@@ -299,6 +360,17 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function(){
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
+    }
+    add(menuProduct) {
+      const thisCart = this,
+        /* generate HTML based on template */
+        generatedHTML = templates.cartProduct(menuProduct),
+        /* create element using utils.createElementFromHTML */
+        generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      /* add element to menu */
+      thisCart.dom.productList.appendChild(generatedDOM);
+
+      console.log('adding product', menuProduct);
     }
   }
 
