@@ -70,6 +70,11 @@
     cart: {
       defaultDeliveryFee: 20,
     },
+    db: {
+      url: '//localhost:3131',
+      products: 'products',
+      orders: 'orders',
+    },
   };
 
   const templates = {
@@ -92,11 +97,11 @@
       thisProduct.processOrder();
     }
     renderInMenu(){
-      const thisProduct = this;
+      const thisProduct = this,
+        generatedHTML = templates.menuProduct(thisProduct.data),
+        menuContainer = document.querySelector(select.containerOf.menu);
 
-      const generatedHTML = templates.menuProduct(thisProduct.data);
       thisProduct.element = utils.createDOMFromHTML(generatedHTML);
-      const menuContainer = document.querySelector(select.containerOf.menu);
       menuContainer.appendChild(thisProduct.element);
     }
     getElements(){
@@ -187,9 +192,9 @@
       thisProduct.dom.priceElem.innerHTML = price;
     }
     prepareCartProduct(){
-      const thisProduct = this;
+      const thisProduct = this,
+        productSummary = {};
 
-      const productSummary = {};
       productSummary.id = thisProduct.id;
       productSummary.name = thisProduct.data.name;
       productSummary.amount = thisProduct.amountWidget.value;
@@ -327,6 +332,7 @@
         deliveryFee = settings.cart.defaultDeliveryFee;
       let totalNumber = 0,
         subTotalPrice = 0;
+
       thisCart.totalPrice = 0;
 
       for(let product of thisCart.products){
@@ -395,7 +401,6 @@
 
       thisCartProduct.dom.edit.addEventListener('click', function(event){
         event.preventDefault();
-
       });
       thisCartProduct.dom.remove.addEventListener('click', function(event){
         event.preventDefault();
@@ -422,17 +427,28 @@
       const thisApp = this;
 
       for(let productData in thisApp.data.products){
-        new Product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
     initData: function(){
-      const thisApp = this;
+      const thisApp = this,
+        url = settings.db.url + '/' + settings.db.products;
 
-      thisApp.data = dataSource;
+      thisApp.data = {};
+
+      fetch(url)
+        .then(function(rawResponse){
+          return rawResponse.json();
+        })
+        .then(function(parsedResponse){
+          thisApp.data.products = parsedResponse;
+          thisApp.initMenu();
+        });
     },
     initCart: function(){
       const thisApp = this,
         cartElem = document.querySelector(select.containerOf.cart);
+
       thisApp.cart = new Cart(cartElem);
     },
     init: function(){
@@ -440,7 +456,6 @@
 
       thisApp.initData();
       thisApp.initCart();
-      thisApp.initMenu();
     },
   };
 

@@ -12,7 +12,7 @@
     "indentation": 2,
     "max-empty-lines": 2,
     "max-nesting-depth": [3, {
-      "ignore": ["pseudo-classes"]
+      "ignore": ["blockless-at-rules"]
     }],
     "rule-empty-line-before": [ "always", {
       "except": ["first-nested"],
