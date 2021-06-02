@@ -63,11 +63,13 @@ class Product {
       event.preventDefault();
       thisProduct.processOrder();
     });
+
     for(let input of thisProduct.dom.formInputs){
       input.addEventListener('change', function(){
         thisProduct.processOrder();
       });
     }
+    
     thisProduct.dom.cartButton.addEventListener('click', function(event){
       event.preventDefault();
       thisProduct.processOrder();
@@ -154,7 +156,7 @@ class Product {
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {
-        product: thisProduct,
+        product: thisProduct.prepareCartProduct(),
       },
     });
 
