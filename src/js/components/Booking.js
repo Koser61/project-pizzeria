@@ -3,10 +3,11 @@ import utils from '../utils.js';
 import AmountWidget from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
-
 class Booking {
   constructor(element){
     const thisBooking = this;
+
+    thisBooking.selectedTable = [];
 
     thisBooking.render(element);
     thisBooking.initWidgets();
@@ -139,6 +140,9 @@ class Booking {
         table.classList.remove(classNames.booking.tableBooked);
       }
     }
+
+    thisBooking.unselectTables();
+    thisBooking.selectedTable.pop();
   }
   render(element){
     const thisBooking = this,
@@ -155,6 +159,7 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     
+    thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector(select.booking.floorPlan);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
   }
   initWidgets(){
@@ -169,21 +174,48 @@ class Booking {
       thisBooking.updateDOM();
     });
 
-    thisBooking.dom.peopleAmount.addEventListener('updated', function(){
-      
+    thisBooking.dom.floorPlan.addEventListener('click', function(event){
+      thisBooking.initTables(event);
     });
+  }
+  initTables(event){
+    const thisBooking = this;
+    const clickedTable = event.target;
 
-    thisBooking.dom.hoursAmount.addEventListener('updated', function(){
-      
-    });
+    if(clickedTable.classList.contains(classNames.booking.table)){
 
-    thisBooking.dom.datePicker.addEventListener('updated', function(){
-      
-    });
-    
-    thisBooking.dom.hourPicker.addEventListener('updated', function(){
+      if(clickedTable.classList.contains(classNames.booking.tableBooked)){
 
-    });
+        tippy(clickedTable, { // eslint-disable-line no-undef
+          content: 'This table is booked already !',
+          showOnCreate: true,
+          trigger: 'manual',
+          duration: 200,
+          placement: 'auto',
+        });
+
+      } else {
+        thisBooking.selectedTable.pop();
+
+        if(clickedTable.classList.contains(classNames.booking.tableSelected)){
+          clickedTable.classList.remove(classNames.booking.tableSelected);
+          
+        } else {
+          thisBooking.unselectTables();
+          clickedTable.classList.add(classNames.booking.tableSelected);
+          thisBooking.selectedTable.push(clickedTable.getAttribute(settings.booking.tableIdAttribute));
+        }
+      }
+    }
+  }
+  unselectTables(){
+    const thisBooking = this;
+
+    for(let table of thisBooking.dom.tables){
+      if(table.classList.contains(classNames.booking.tableSelected)){
+        table.classList.remove(classNames.booking.tableSelected);
+      }
+    }
   }
 }
 
