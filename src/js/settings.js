@@ -42,8 +42,13 @@ export const select = {
   booking: {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
+    checkboxWater: 'input[value="water"]',
+    checkboxBread: 'input[value="bread"]',
     floorPlan: '.floor-plan',
     tables: '.floor-plan .table',
+    phone: 'input[name="phone"]',
+    address: 'input[name="address"]',
+    formSubmit: 'button[type="submit"]',
   },
   nav: {
     links: '.main-nav a',
