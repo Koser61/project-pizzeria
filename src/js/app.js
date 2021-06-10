@@ -1,16 +1,16 @@
 import {settings, select, classNames} from './settings.js';
+import Home from './components/Home.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
 
 const app = {
   initPages: function(){
-    const thisApp = this;
+    const thisApp = this,
+      idFromHash = window.location.hash.replace('#/', '');
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
-
-    const idFromHash = window.location.hash.replace('#/', '');
 
     let pageMatchingHash = thisApp.pages[0].id;
 
@@ -71,6 +71,22 @@ const app = {
         thisApp.initMenu();
       });
   },
+  initHome: function(){
+    const thisApp = this;
+
+    thisApp.homePageContainer = document.querySelector(select.containerOf.homePage);
+    thisApp.home = new Home(thisApp.homePageContainer);
+
+    thisApp.home.dom.orderLink.addEventListener('click', function(event){
+      event.preventDefault();
+      thisApp.activatePage(this.getAttribute('href').replace('#', ''));
+    });
+
+    thisApp.home.dom.bookingLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      thisApp.activatePage(this.getAttribute('href').replace('#', ''));
+    });
+  },
   initCart: function(){
     const thisApp = this,
       cartElem = document.querySelector(select.containerOf.cart);
@@ -93,6 +109,7 @@ const app = {
 
     thisApp.initPages();
     thisApp.initData();
+    thisApp.initHome();
     thisApp.initCart();
     thisApp.initBooking();
   },

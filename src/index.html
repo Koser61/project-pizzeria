@@ -10,8 +10,9 @@
   <link rel="shortcut-icon" href="./images/favicon/android-chrome-512x512.png">
   <link rel="apple-touch-icon" href="./images/favicon/apple-touch-icon.png">
   <link rel="manifest" href="./images/favicon/site.webmanifest">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
@@ -26,6 +27,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -67,6 +69,9 @@
   </header>
 
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -74,6 +79,118 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+
+    <script id="template-home-page" type="text/x-handlebars-template">
+      <div class="home-page container">
+        <section class="boxes">
+          <div class="grid-box-wrapper">
+            <a class="box order" href="#order">
+              <h4 class="box-title">ORDER ONLINE</h4>
+              <p class="box-subtitle">Delicious food delivered to your door</p>
+            </a>
+            <a class="box book" href="#booking">
+              <h4 class="box-title">BOOK A TABLE</h4>
+              <p class="box-subtitle">Check availability and book now</p>
+            </a>
+            <div class="box opening">
+              <h4 class="box-title opening">OPENING HOURS:</h4>
+              <p id="opening-hours"></p>
+            </div>
+          </div>
+        </section>
+        <section class="carousel">
+          <div class="splide">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <li class="splide__slide">
+                  <div class="grid-wrapper">
+                    <div class="image-box">
+                      <img src="/images/home/pizza-3.jpg">
+                    </div>
+                    <div class="opinion">
+                      <h5 class="opinion-title">Amazing service !</h5>
+                      <p class="opinion-quote">Mauris dignissim non massa sit amet sodales. Nam efficitur urna vitae pretium ultrices. Mauris iaculis auctor tincidunt. In hac habitasse platea dictumst. Vivamus fermentum mattis maximus.</p>
+                      <p class="opinion-author">~ Margaret Osborne</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="splide__slide">
+                  <div class="grid-wrapper">
+                    <div class="image-box">
+                      <img src="/images/home/pizza-3.jpg">
+                    </div>
+                    <div class="opinion">
+                      <h5 class="opinion-title">Best pizza in the city !</h5>
+                      <p class="opinion-quote">Mauris dignissim non massa sit amet sodales. Nam efficitur urna vitae pretium ultrices. Mauris iaculis auctor tincidunt. In hac habitasse platea dictumst. Vivamus fermentum mattis maximus.</p>
+                      <p class="opinion-author">~ John Doe</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="splide__slide">
+                  <div class="grid-wrapper">
+                    <div class="image-box">
+                      <img src="/images/home/pizza-3.jpg">
+                    </div>
+                    <div class="opinion">
+                      <h5 class="opinion-title">Great service !</h5>
+                      <p class="opinion-quote">Mauris dignissim non massa sit amet sodales. Nam efficitur urna vitae pretium ultrices. Mauris iaculis auctor tincidunt. In hac habitasse platea dictumst. Vivamus fermentum mattis maximus.</p>
+                      <p class="opinion-author">~ Anna Smith</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="gallery">
+          <div class="gallery-grid">
+            <div class="image-box">
+              <img src="images/home/pizza-4.jpg">
+              <div class="icon-container">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="image-box">
+              <img src="images/home/pizza-5.jpg">
+              <div class="icon-container">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="image-box">
+              <img src="images/home/pizza-6.jpg">
+              <div class="icon-container">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="image-box">
+              <img src="images/home/pizza-7.jpg">
+              <div class="icon-container">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="image-box">
+              <img src="images/home/pizza-8.jpg">
+              <div class="icon-container">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+            <div class="image-box">
+              <img src="images/home/pizza-9.jpg">
+              <div class="icon-container">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+          </div>
+          <a class="link" href="#">View more on Instagram</a>
+        </section>
+      </div>
+    </script>
 
     <script id="template-cart-product" type="text/x-handlebars-template">
       <li>
@@ -249,6 +366,7 @@
     </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
   <script src="https://unpkg.com/@popperjs/core@2"></script>

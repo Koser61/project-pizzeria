@@ -72,11 +72,6 @@ class Cart {
     thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
     thisCart.dom.subTotalPrice.innerHTML = thisCart.subTotalPrice;
     thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
-
-    [].forEach.call(thisCart.dom.totalPrice, function(totalWrapper) {
-      totalWrapper.innerHTML = '';
-      totalWrapper.innerHTML = thisCart.totalPrice;
-    });
   }
   remove(product){
     const thisCart = this,
