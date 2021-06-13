@@ -1,4 +1,4 @@
-import {select} from '../settings.js';
+import { select } from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 
 class CartProduct {
@@ -21,6 +21,7 @@ class CartProduct {
 
     thisCartProduct.dom = {};
     thisCartProduct.dom.wrapper = element;
+
     thisCartProduct.dom.amountWidget = element.querySelector(select.cartProduct.amountWidget);
     thisCartProduct.dom.price = element.querySelector(select.cartProduct.price);
     thisCartProduct.dom.edit = element.querySelector(select.cartProduct.edit);
@@ -30,6 +31,7 @@ class CartProduct {
     const thisCartProduct = this;
 
     thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
+
     thisCartProduct.dom.amountWidget.addEventListener('updated', function(){
       thisCartProduct.amount = thisCartProduct.amountWidget.value;
       thisCartProduct.price = thisCartProduct.amount * thisCartProduct.priceSingle;
@@ -42,6 +44,7 @@ class CartProduct {
     thisCartProduct.dom.edit.addEventListener('click', function(event){
       event.preventDefault();
     });
+    
     thisCartProduct.dom.remove.addEventListener('click', function(event){
       event.preventDefault();
       thisCartProduct.remove();

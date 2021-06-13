@@ -14,10 +14,9 @@ class Booking {
     thisBooking.getData();
   }
   getData(){
-    const thisBooking = this;
-
-    const startDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePicker.minDate);
-    const endDateParam = settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxDate);
+    const thisBooking = this,
+      startDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePicker.minDate),
+      endDateParam = settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxDate);
 
     const params = {
       bookings: [
@@ -50,9 +49,10 @@ class Booking {
       fetch(urls.eventsRepeat),
     ])
       .then(function(allResponses){
-        const bookingsResponse = allResponses[0];
-        const eventsCurrentResponse = allResponses[1];
-        const eventsRepeatResponse = allResponses[2];
+        const bookingsResponse = allResponses[0],
+          eventsCurrentResponse = allResponses[1],
+          eventsRepeatResponse = allResponses[2];
+
         return Promise.all([
           bookingsResponse.json(),
           eventsCurrentResponse.json(),
@@ -109,11 +109,10 @@ class Booking {
   }
   updateDOM(){
     const thisBooking = this;
+    let allAvailable = false;
 
     thisBooking.date = thisBooking.datePicker.value;
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
-
-    let allAvailable = false;
 
     if(
       typeof thisBooking.booked[thisBooking.date] == 'undefined'
@@ -190,8 +189,8 @@ class Booking {
     });
   }
   initTables(event){
-    const thisBooking = this;
-    const clickedTable = event.target;
+    const thisBooking = this,
+      clickedTable = event.target;
 
     if(clickedTable.classList.contains(classNames.booking.table)){
 

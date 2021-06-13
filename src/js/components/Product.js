@@ -1,7 +1,6 @@
 import {templates, select, classNames} from '../settings.js';
-import AmountWidget from './AmountWidget.js';
 import utils from '../utils.js';
-
+import AmountWidget from './AmountWidget.js';
 class Product {
   constructor(id, data){
     const thisProduct = this;
@@ -40,11 +39,14 @@ class Product {
     const thisProduct = this;
 
     thisProduct.dom.accordionTrigger.addEventListener('click', function(event) {
-      event.preventDefault();
       const activeProduct = document.querySelector(select.all.menuProductsActive);
+
+      event.preventDefault();
+      
       if (activeProduct && activeProduct !== thisProduct.element){
         activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
       }
+
       thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
     });
   }
@@ -52,6 +54,7 @@ class Product {
     const thisProduct = this;
 
     thisProduct.amountWidget = new AmountWidget(thisProduct.dom.amountWidgetElem);
+    
     thisProduct.dom.amountWidgetElem.addEventListener('updated', function(){
       thisProduct.processOrder();
     });
