@@ -45,7 +45,10 @@ class Cart {
 
     thisCart.dom.form.addEventListener('submit', function(event){
       event.preventDefault();
+
       thisCart.sendOrder();
+      thisCart.emptyCart();
+      thisCart.update();
     });
   }
   add(menuProduct){
@@ -91,6 +94,12 @@ class Cart {
     product.dom.wrapper.innerHTML = '';
     thisCart.products.splice(productIndex, 1);
     thisCart.update();
+  }
+  emptyCart(){
+    const thisCart = this;
+
+    thisCart.products.splice(0, thisCart.products.length);
+    thisCart.dom.productList.innerHTML = '';
   }
   sendOrder(){
     const thisCart = this,
