@@ -70,8 +70,8 @@ export const select = {
     deliveryFee: '.cart__order-delivery .cart__order-price-sum strong',
     form: '.cart__order',
     formSubmit: '.cart__order [type="submit"]',
-    phone: '[name="phone"]',
-    address: '[name="address"]',
+    phone: '#phone',
+    address: '#address',
   },
   cartProduct: {
     amountWidget: '.widget-amount',
@@ -87,6 +87,8 @@ export const classNames = {
   },
   cart: {
     wrapperActive: 'active',
+    inputInvalid: 'error',
+    inputValid: 'valid',
   },
   booking: {
     loading: 'loading',
@@ -109,6 +111,7 @@ export const settings = {
   },
   cart: {
     defaultDeliveryFee: 20,
+    phoneMinLenght: 9,
   },
   hours: {
     open: 12,
