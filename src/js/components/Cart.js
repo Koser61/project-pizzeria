@@ -100,6 +100,8 @@ class Cart {
 
     thisCart.products.splice(0, thisCart.products.length);
     thisCart.dom.productList.innerHTML = '';
+    thisCart.dom.phone.value = '';
+    thisCart.dom.adress.value = '';
   }
   sendOrder(){
     const thisCart = this,
