@@ -170,7 +170,8 @@ class Cart {
     thisCart.dom.address.value = '';
     thisCart.dom.address.classList.remove(classNames.cart.inputValid);
     thisCart.dom.address.classList.remove(classNames.cart.inputInvalid);
-
+    
+    thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
   }
   sendOrder(){
     const thisCart = this,
