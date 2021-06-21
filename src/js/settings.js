@@ -30,6 +30,9 @@ export const select = {
     imageWrapper: '.product__images',
     amountWidget: '.widget-amount',
     cartButton: '[href="#add-to-cart"]',
+    inputsRadio: 'input[type="radio"]',
+    inputsCheckbox: 'input[type="checkbox"]',
+    selectOptions: 'option',
   },
   widgets: {
     amount: {

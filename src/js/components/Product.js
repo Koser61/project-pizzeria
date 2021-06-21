@@ -1,4 +1,4 @@
-import {templates, select, classNames} from '../settings.js';
+import {templates, select, classNames, settings} from '../settings.js';
 import utils from '../utils.js';
 import AmountWidget from './AmountWidget.js';
 class Product {
@@ -33,7 +33,11 @@ class Product {
     thisProduct.dom.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
     thisProduct.dom.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
     thisProduct.dom.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+    
     thisProduct.dom.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
+    thisProduct.dom.inputsRadio = thisProduct.element.querySelectorAll(select.menuProduct.inputsRadio);
+    thisProduct.dom.inputsCheckbox = thisProduct.element.querySelectorAll(select.menuProduct.inputsCheckbox);
+    thisProduct.dom.optionsSelect = thisProduct.element.querySelectorAll(select.menuProduct.selectOptions);
   }
   initAccordion(){
     const thisProduct = this;
@@ -77,6 +81,7 @@ class Product {
       event.preventDefault();
       thisProduct.processOrder();
       thisProduct.addToCart();
+      thisProduct.resetDefaults();
     });
   }
   processOrder(){
@@ -164,6 +169,38 @@ class Product {
     });
 
     thisProduct.element.dispatchEvent(event);
+  }
+  resetDefaults(){
+    const thisProduct = this;
+
+    const inputsRadio = thisProduct.dom.inputsRadio,
+      inputsCheckbox = thisProduct.dom.inputsCheckbox,
+      optionsSelect = thisProduct.dom.optionsSelect;
+
+    function resetInputChoice(nodeList){
+      for(let node of nodeList){
+        if(!node.defaultChecked){
+          node.checked = false;
+        } else {
+          node.checked = true;
+        }
+      }
+    }
+
+    resetInputChoice(inputsRadio);
+    resetInputChoice(inputsCheckbox);
+
+    for(let optionSelect of optionsSelect){
+      if(!optionSelect.defaultChecked){
+        optionSelect.selected = false;
+      } else {
+        optionSelect.selected = true;
+      }
+    }
+
+    thisProduct.amountWidget.setValue(settings.amountWidget.defaultValue);
+    thisProduct.processOrder();
+    thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
   }
 }
 
