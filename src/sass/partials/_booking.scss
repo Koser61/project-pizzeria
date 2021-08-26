@@ -210,6 +210,112 @@
 }
   
 .booking-options {
-  @include flex(row, flex-start, space-between);
+  @include flex(row, flex-start, space-evenly);
+  flex-wrap: wrap;
   margin: ($base-size * 4) auto;
+
+  .booking-option-title {
+    margin: $base-size;
+  }
+}
+
+.order-confirmation {
+  @include flex(row, flex-start, space-between);
+  flex-wrap: wrap;
+  
+  input, button {
+    margin: $base-size / 2;
+  }
+}
+
+@media only screen and (max-width: 536px) {
+  .time-picker {
+    @include flex(column, center, center);
+
+    .hour-picker {
+      margin-top: $base-size * 2;
+      width: 80%;
+    }
+  }
+}
+@media only screen and (max-width: 400px) {
+  .floor-plan {
+    width: 250px;
+    height: 250px;
+
+    .bar {
+      bottom: 30px;
+      width: 80px;
+    }
+
+    [data-table="1"] {
+      left: 30px;
+      top: 30px;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+    }
+    
+    [data-table="2"] {
+      right: 15px;
+      top: 15px;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+    }
+    
+    [data-table="3"] {
+      right: 30px;
+      top: 130px;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+    }
+  }
+}
+@media only screen and (max-width: 346px) {
+  .floor-plan {
+    width: 200px;
+    height: 200px;
+    border-width: $base-size / 1.5;
+
+    .object {
+      font-size: 12px;
+    }
+
+    .entry {
+      bottom: -22px;
+    }
+
+    .bar {
+      bottom: 20px;
+      width: 50px;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    [data-table="1"] {
+      left: 20px;
+      top: 20px;
+      width: 55px;
+      height: 55px;
+      line-height: 55px;
+    }
+    
+    [data-table="2"] {
+      right: 15px;
+      top: 15px;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+    }
+    
+    [data-table="3"] {
+      right: 20px;
+      top: 100px;
+      width: 55px;
+      height: 55px;
+      line-height: 55px;
+    }
+  }
 }
