@@ -103,6 +103,14 @@
     margin-top: $base-size;
     margin-bottom: $base-size * 3;
 
+    .splide {
+      position: relative;
+
+      &__pagination {
+        position: absolute;
+      }
+    }
+
     .splide__pagination__page {
       background: #ccc;
       
@@ -123,16 +131,12 @@
     .image-box {
       grid-row: 1 / 1;
       grid-column: 1;
-      height: 180px;
-      width: 180px;
-      align-self: center;
+      @include flex(row, center, center);
       margin: $base-size / 4;
-      position: relative;
 
       img {
-        position: absolute;
-        height: 100%;
-        width: 100%;
+        height: 180px;
+        width: 180px;
         object-fit: cover;
         border-radius: $radius;
       }
@@ -141,9 +145,7 @@
     .opinion {
       grid-row: 1 / 1;
       grid-column: 2 / 4;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include flex(column, none, center );
       margin: $base-size / 4;
       padding: $base-size $base-size * 2;
 
@@ -172,7 +174,7 @@
   .gallery-grid {
     display: grid;
     grid-template: 50% 50% / 33.333% 33.333% 33.333%;
-    gap: $base-size / 2 $base-size / 4;
+    gap: $base-size / 2;
 
     .image-box {
       position: relative;
@@ -242,6 +244,92 @@
     &:hover {
       text-decoration: none;
       transition: $transition;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .gallery-grid {
+    grid-template: 33.333% 33.333% 33.333% / 50% 50% !important;
+  }
+
+  .grid-wrapper {
+    grid-template: 50% 50% / 100% !important;
+    justify-content: center;
+    align-content: center;
+
+    .image-box {
+      grid-column: 1 !important;
+      grid-row: 1 !important;
+    }
+
+    .opinion {
+      grid-column: 1 !important;
+      grid-row: 2 !important;
+      text-align: center;
+    }
+  }
+}
+@media only screen and (max-width: 638px ) {
+  .grid-box-wrapper {
+    grid-template: 33.333% 33.333% 33.333% / 100% !important;
+  
+    .order {
+      grid-row: 1 !important;
+      grid-column: 1 / 2 !important;
+    }
+
+    .book {
+      grid-row: 2 !important;
+      grid-column: 1 / 2 !important;
+    }
+
+    .opening {
+      grid-row: 3 !important;
+      grid-column: 1 / 2 !important;
+    }
+  }
+}
+@media only screen and (max-width: 505px) {
+  .gallery-grid {
+    grid-template: 16.666% 16.666% 16.666% 16.666% 16.666% 16.666% / 100% !important;
+    gap: $base-size !important;
+  }
+
+  .link {
+    margin: 6 * $base-size 0 0 0  !important;
+  }
+}
+@media only screen and (max-width: 386px) {
+  .home-page {
+    content: '';
+
+    .box-title {
+      font-size: $base-size * 1.8 !important;
+    }
+  
+    .box-subtitle, #opening-hours {
+      font-size: $base-size !important;
+    }
+  }
+
+  .splide {
+    &__pagination {
+      position: absolute;
+      bottom: - $base-size !important;
+    }
+  }
+}
+@media only screen and (max-width: 348px) {
+  .home-page {
+    content: '';
+
+    .box-title {
+      font-size: $base-size * 1.6 !important;
+    }
+  
+    .box-subtitle, #opening-hours  {
+      font-size: $base-size * 0.8 !important;
     }
   }
 }
