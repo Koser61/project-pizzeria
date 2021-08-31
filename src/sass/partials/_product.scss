@@ -17,13 +17,14 @@
   
   &__name {
     @extend .h1;
+    text-align: center;
     position: relative;
   }
   
   &__icon {
     position: absolute;
     color: $color-main;
-    right: (-$base-size * 5);
+    right: -$base-size * 4;
     top: $base-size;
     font-size: ($base-size * 1.5);
     transition: $transition;
@@ -36,6 +37,7 @@
   
   &__description {
     color: lighten($color-dark, 10%);
+    margin-bottom: $base-size * 2;
   }
   
   &__wrapper {
@@ -57,6 +59,7 @@
   
   &__order {
     width: calc(100% - 400px);
+    min-width: 108px;
     opacity: 0;
     transition: opacity 200ms;
   }
@@ -119,4 +122,70 @@
     padding: 0;
   }
   
+}
+
+@media only screen and (max-width: 604px) {
+  .product {
+    &__wrapper {
+      @include flex(column-reverse, center, flex-start);
+    }
+
+    &__params {
+      @include flex(row, center, center);
+
+      li {
+        margin-inline: $base-size;
+      }
+    }
+
+    &__total-price {
+      text-align: center;
+    }
+  }
+
+  .widget-amount {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .product {
+    &__images {
+      display: none;
+    }
+
+    &__params {
+      @include flex(column, center, flex-start);
+      width: auto;
+    }
+  }
+}
+@media only screen and (max-width: 486px) {
+  .product {
+    &__header {
+      flex-direction: column;
+    }
+  }
+}
+@media only screen and (max-width: 430px) {
+  .product {
+    &__icon {
+      right: -$base-size * 2;
+    }
+  }
+}
+@media only screen and (max-width: 356px) {
+  .product {
+    &__icon {
+      right: -$base-size;
+      top: $base-size * 3;
+    }
+  }
+}
+@media only screen and (max-width: 300px) {
+  .product {
+    &__icon {
+      right: -$base-size *2;
+      top: $base-size * 3;
+    }
+  }
 }
