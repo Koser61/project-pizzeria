@@ -63,6 +63,7 @@ export const select = {
   },
   nav: {
     links: '.main-nav a',
+    topButton: 'to-top-btn',
   },
   cart: {
     productList: '.cart__order-summary',

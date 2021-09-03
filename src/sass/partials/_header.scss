@@ -31,6 +31,18 @@
     font-size: ($base-size * 1.5);
     font-weight: $font-light;
     font-style: italic;
+
+    .flag-1 {
+      color: $color-flag-one;
+    }
+
+    .flag-2 {
+      color: $color-flag-two;
+    }
+
+    .flag-3 {
+      color: $color-flag-three;
+    }
   }
 
 }

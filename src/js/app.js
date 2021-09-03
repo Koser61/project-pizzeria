@@ -104,6 +104,21 @@ const app = {
     thisApp.BookingWidgetContainer = document.querySelector(select.containerOf.booking);
     thisApp.booking = new Booking(thisApp.BookingWidgetContainer);
   },
+  initTopButton: function(){
+    const header = document.querySelector('.header'),
+      headerHeight = header.offsetHeight,
+      topButton = document.getElementById(select.nav.topButton);
+
+    function scrollBehavior() {
+      if (document.body.scrollTop > headerHeight || document.documentElement.scrollTop > headerHeight) {
+        topButton.style.display = 'block';
+      } else {
+        topButton.style.display = 'none';
+      }
+    }
+    
+    window.onscroll = function() {scrollBehavior();};
+  },
   init: function(){
     const thisApp = this;
 
@@ -112,6 +127,7 @@ const app = {
     thisApp.initHome();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initTopButton();
   },
 };
 
