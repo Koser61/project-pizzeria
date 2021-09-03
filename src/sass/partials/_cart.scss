@@ -164,3 +164,10 @@
     }
   }
 }
+
+@media only screen and (max-width: 586px) {
+  .cart {
+    @include center();
+    transform: translate(-50%, -10%);
+  }
+}
