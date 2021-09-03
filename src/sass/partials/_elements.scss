@@ -4,6 +4,7 @@
   @include btn($color-dark, $color-light, $color-dark);
 
   &.to-top-btn {
+    display: none;
     position: fixed;
     bottom: $base-size * 4;
     right: $base-size * 4;
