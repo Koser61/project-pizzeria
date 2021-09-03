@@ -58,3 +58,41 @@
   }
 
 }
+
+@media only screen and (max-width: 586px) {
+  .header {
+    padding: ($base-size * 6) 0 ($base-size * 8) 0;
+
+    &__wrapper {
+      text-align: center;
+
+      .logo {
+        transform: translateY(-75%);
+
+        &__subtitle {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 387px) {
+  .header {
+    a {
+      margin-right: $base-size;
+    }
+  }
+}
+@media only screen and (max-width: 365px) {
+  .header {
+    .main-nav {
+      width: 100%;
+      @include flex(row, center, space-evenly);
+
+      a {
+        padding: ($base-size / 2) $base-size;
+        margin-right: 0;
+      }
+    }
+  }
+}
