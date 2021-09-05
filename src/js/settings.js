@@ -84,6 +84,7 @@ export const select = {
     remove: '[href="#remove"]',
   },
 };
+
 export const classNames = {
   menuProduct: {
     wrapperActive: 'active',
@@ -107,6 +108,7 @@ export const classNames = {
     active: 'active',
   }
 };
+
 export const settings = {
   amountWidget: {
     defaultValue: 1,
@@ -141,6 +143,7 @@ export const settings = {
     repeatParam: 'repeat_ne=false',
   },
 };
+
 export const templates = {
   homePage: Handlebars.compile(
     document.querySelector(select.templateOf.homePage).innerHTML
