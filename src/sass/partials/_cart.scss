@@ -167,7 +167,9 @@
 
 @media only screen and (max-width: 586px) {
   .cart {
-    @include center();
-    transform: translate(-50%, -10%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
   }
 }
