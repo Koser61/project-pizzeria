@@ -1,116 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Pizzeria</title>
-    <link rel="icon" href="./images/favicon/favicon.ico" />
-    <link rel="shortcut-icon" href="./images/favicon/android-chrome-192x192.png" />
-    <link rel="shortcut-icon" href="./images/favicon/android-chrome-512x512.png" />
-    <link rel="apple-touch-icon" href="./images/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="./images/favicon/site.webmanifest" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-    <link rel="stylesheet" href="vendor/range-slider.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
 
-  <body>
-    <header id="header" class="header">
-      <div class="container">
-        <div class="header__wrapper">
-          <div class="logo">
-            <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
-            <h2 class="logo__subtitle">
-              <span class="flag-1">the best</span>
-              <span class="flag-2">homemade</span>
-              <span class="flag-3">Italian food</span>
-            </h2>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pizzeria</title>
+  <link rel="icon" href="./images/favicon/favicon.ico">
+  <link rel="shortcut-icon" href="./images/favicon/android-chrome-192x192.png">
+  <link rel="shortcut-icon" href="./images/favicon/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" href="./images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="./images/favicon/site.webmanifest">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="vendor/range-slider.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header id="header" class="header">
+    <div class="container">
+      <div class="header__wrapper">
+        <div class="logo">
+          <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
+          <h2 class="logo__subtitle">
+            <span class="flag-1">the best</span>
+            <span class="flag-2">homemade</span>
+            <span class="flag-3">Italian food</span>
+          </h2>
+        </div>
+        <div class="main-nav">
+          <a href="#home">Home</a>
+          <a href="#order">Order</a>
+          <a href="#booking">Booking</a>
+        </div>
+        <div id="cart" class="cart">
+          <div class="cart__summary">
+            <span class="cart__total-number">0</span>
+            <span class="cart__total-price">Total price: $<strong>0</strong></span>
+            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-shopping-cart cart__icon"></i>
           </div>
-          <div class="main-nav">
-            <a href="#home">Home</a>
-            <a href="#order">Order</a>
-            <a href="#booking">Booking</a>
-          </div>
-          <div id="cart" class="cart">
-            <div class="cart__summary">
-              <span class="cart__total-number">0</span>
-              <span class="cart__total-price"
-                >Total price: $<strong>0</strong></span
-              >
-              <i class="fas fa-chevron-down"></i>
-              <i class="fas fa-shopping-cart cart__icon"></i>
-            </div>
-            <div class="cart__content">
-              <form class="cart__order">
-                <ul class="cart__order-summary no-spacing"></ul>
-                <ul class="cart__order-price">
-                  <li class="cart__order-subtotal">
-                    <span class="cart__order-price-name">Subtotal:</span>
-                    <span class="cart__order-price-sum"
-                      >$<strong>0</strong></span
-                    >
-                  </li>
-                  <li class="cart__order-delivery">
-                    <span class="cart__order-price-name">Delivery:</span>
-                    <span class="cart__order-price-sum"
-                      >$<strong>0</strong></span
-                    >
-                  </li>
-                  <li class="cart__order-total">
-                    <span class="cart__order-price-name"
-                      ><strong>Total:</strong></span
-                    >
-                    <span class="cart__order-price-sum"
-                      >$<strong>0</strong></span
-                    >
-                  </li>
-                </ul>
-                <div class="cart__order-confirmation">
-                  <input
-                    type="tel"
-                    name="phone"
-                    id="phone"
-                    placeholder="Your phone"
-                  />
-                  <input
-                    type="text"
-                    name="address"
-                    id="address"
-                    placeholder="Your address"
-                  />
-                  <button type="submit" class="btn-secondary">Order</button>
-                </div>
-              </form>
-            </div>
+          <div class="cart__content">
+            <form class="cart__order">
+              <ul class="cart__order-summary no-spacing"></ul>
+              <ul class="cart__order-price">
+                <li class="cart__order-subtotal">
+                  <span class="cart__order-price-name">Subtotal:</span>
+                  <span class="cart__order-price-sum">$<strong>0</strong></span>
+                </li>
+                <li class="cart__order-delivery">
+                  <span class="cart__order-price-name">Delivery:</span>
+                  <span class="cart__order-price-sum">$<strong>0</strong></span>
+                </li>
+                <li class="cart__order-total">
+                  <span class="cart__order-price-name"><strong>Total:</strong></span>
+                  <span class="cart__order-price-sum">$<strong>0</strong></span>
+                </li>
+              </ul>
+              <div class="cart__order-confirmation">
+                <input type="tel" name="phone" id="phone" placeholder="Your phone">
+                <input type="text" name="address" id="address" placeholder="Your address">
+                <button type="submit" class="btn-secondary">Order</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </header>
-
-    <div id="pages">
-      <section id="home">
-        <div class="home-wrapper container"></div>
-      </section>
-      <section id="order">
-        <div id="product-list" class="product-list container"></div>
-      </section>
-      <section id="booking">
-        <div class="booking-wrapper container"></div>
-      </section>
     </div>
+  </header>
 
-    <div id="to-top-btn" class="to-top-btn btn-primary" title="Back to top">
-      <a href="#header">
-        <span>Back to top</span>
-        <i class="fas fa-arrow-up"></i>
-      </a>
-    </div>
+  <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
+    <section id="order">
+      <div id="product-list" class="product-list container"></div>
+    </section>
+    <section id="booking">
+      <div class="booking-wrapper container"></div>
+    </section>
+  </div>
 
-    <script id="template-home-page" type="text/x-handlebars-template">
+  <div id="to-top-btn" class="to-top-btn btn-primary" title="Back to top">
+    <a href="#header">
+      <span>Back to top</span>
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </div>
+
+  <script id="template-home-page" type="text/x-handlebars-template">
       <div class="home-page container">
         <section class="boxes">
           <div class="grid-box-wrapper">
@@ -230,8 +211,7 @@
         </section>
       </div>
     </script>
-
-    <script id="template-cart-product" type="text/x-handlebars-template">
+  <script id="template-cart-product" type="text/x-handlebars-template">
       <li>
         <div class="widget-amount">
           <a class="btn-quantity btn-quantity--lt" href="#less"><i
@@ -262,8 +242,7 @@
         </ul>
       </li>
     </script>
-
-    <script id="template-menu-product" type="text/x-handlebars-template">
+  <script id="template-menu-product" type="text/x-handlebars-template">
       <article class="product">
 
           <header class="product__header">
@@ -341,8 +320,7 @@
 
       </article>
     </script>
-
-    <script id="template-booking-widget" type="text/x-handlebars-template">
+  <script id="template-booking-widget" type="text/x-handlebars-template">
       <div class="booking-widget">
         <h2 class="page__title no-spacing">Book a table</h2>
         <form class="booking-form">
@@ -422,13 +400,13 @@
         </form>
       </div>
     </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="vendor/range-slider.min.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script src="js/app.js" type="module"></script>
+</body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="vendor/range-slider.min.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
-    <script src="js/app.js" type="module"></script>
-  </body>
 </html>
