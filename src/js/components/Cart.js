@@ -177,6 +177,7 @@ class Cart {
     const thisCart = this,
       url = settings.db.url + '/' + settings.db.orders,
       payload = {
+        status: 'new',
         address: thisCart.dom.address.value,
         phone: thisCart.dom.phone.value,
         totalPrice: thisCart.totalPrice,
