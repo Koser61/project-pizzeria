@@ -174,12 +174,14 @@ class Cart {
     thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
   }
   sendOrder(){
+    const orderTimeISO = new Date(Date.now()).toISOString();
     const thisCart = this,
       url = settings.db.url + '/' + settings.db.orders,
       payload = {
         status: 'ordered',
         address: thisCart.dom.address.value,
         phone: thisCart.dom.phone.value,
+        orderTime: orderTimeISO,
         totalPrice: thisCart.totalPrice,
         subTotalPrice: thisCart.subTotalPrice,
         totalNumber: thisCart.totalNumber,
