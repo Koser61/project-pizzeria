@@ -224,7 +224,7 @@
   flex-wrap: wrap;
   
   input, button {
-    margin: $base-size / 2;
+    margin: calc($base-size / 2);
   }
 }
 
@@ -277,7 +277,7 @@
   .floor-plan {
     width: 200px;
     height: 200px;
-    border-width: $base-size / 1.5;
+    border-width: calc($base-size / 1.5);
 
     .object {
       font-size: 12px;

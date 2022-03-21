@@ -103,7 +103,7 @@
 @media only screen and (max-width: 365px) {
   .header {
     a {
-      padding: ($base-size / 2) $base-size;
+      padding: calc($base-size / 2) $base-size;
       margin-right: 0;
     }
   }

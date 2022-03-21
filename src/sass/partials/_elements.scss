@@ -7,8 +7,8 @@
     bottom: $base-size * 4;
     right: $base-size * 4;
     font-size: $base-size * 2;
-    padding: ($base-size / 2.5) $base-size;
-    box-shadow: ($base-size / 6) ($base-size / 6) ($base-size / 4) lighten($color-dark, 10%);
+    padding: calc($base-size / 2.5) $base-size;
+    box-shadow: calc($base-size / 6) calc($base-size / 6) calc($base-size / 4) lighten($color-dark, 10%);
     z-index: 999;
 
     a {

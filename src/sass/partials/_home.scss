@@ -13,7 +13,7 @@
       height: $base-size * 10;
       position: relative;
       border-radius: $radius;
-      margin: $base-size / 4;
+      margin: calc($base-size / 4);
       text-decoration: none;
 
       &.opening {
@@ -128,7 +128,7 @@
       grid-row: 1 / 1;
       grid-column: 1;
       @include flex(row, center, center);
-      margin: $base-size / 4;
+      margin: calc($base-size / 4);
 
       img {
         height: 180px;
@@ -142,7 +142,7 @@
       grid-row: 1 / 1;
       grid-column: 2 / 4;
       @include flex(column, none, center );
-      margin: $base-size / 4;
+      margin: calc($base-size / 4);
       padding: $base-size $base-size * 2;
 
       .opinion-title {
@@ -168,7 +168,7 @@
   .gallery-grid {
     display: grid;
     grid-template: 50% 50% / 33.333% 33.333% 33.333%;
-    gap: $base-size / 2;
+    gap: calc($base-size / 2);
 
     .image-box {
       position: relative;
@@ -206,7 +206,7 @@
         font-size: $base-size * 2;
         z-index: 4;
         color: $color-light;
-        margin: $base-size / 3;
+        margin: calc($base-size / 3);
         opacity: 0;
         cursor: pointer;
       }

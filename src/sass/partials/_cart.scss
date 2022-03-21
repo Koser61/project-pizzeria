@@ -3,7 +3,7 @@
   width: 300px;
   right: 0;
   top: $base-size;
-  padding: ($base-size) ($base-size * 1.5);
+  padding: $base-size ($base-size * 1.5);
   background: $color-light;
   border-radius: $radius;
   color: $color-main;
@@ -84,7 +84,7 @@
   &__product-details {
     li {
       display: block;
-      margin: 0 0 ($base-size / 4) 0;
+      margin: 0 0 calc($base-size / 4) 0;
       font-size: 10px;
       color: lighten($color-dark, 40%);
       text-transform: lowercase;
@@ -97,7 +97,7 @@
 
   &__product-details-label {
     position: relative;
-    padding: 0 ($base-size / 2) 0 0;
+    padding: 0 calc($base-size / 2) 0 0;
     font-weight: 700;
 
     &::after {
@@ -147,18 +147,18 @@
 
     input, button {
       width: 100%;
-      margin-bottom: ($base-size / 2);
+      margin-bottom: calc($base-size / 2);
       transition: $transition;
     }
 
     .error {
-      border: $base-size / 3 solid $color-danger;
+      border: calc($base-size / 3) solid $color-danger;
       border-radius: $radius;
       transition: $transition;
     }
 
     .valid {
-      border: $base-size / 3 solid $color-success;
+      border: calc($base-size / 3) solid $color-success;
       border-radius: $radius;
       transition: $transition;
     }
