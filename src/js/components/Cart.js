@@ -174,7 +174,7 @@ class Cart {
     thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
   }
   sendOrder(){
-    const orderTimeISO = new Date(Date.now()).toISOString();
+    const orderTimeISO = new Date().toISOString();
     const thisCart = this,
       url = settings.db.url + '/' + settings.db.orders,
       payload = {
@@ -188,6 +188,8 @@ class Cart {
         deliveryFee: thisCart.deliveryFee,
         products: [],
       };
+
+    console.log('orderTime', payload.orderTime);
 
     for(let prod of thisCart.products) {
       payload.products.push(prod.getData());
