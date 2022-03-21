@@ -81,7 +81,7 @@ class Booking {
       maxDate = thisBooking.datePicker.maxDate;
 
     for(let item of eventsRepeat){
-      if(item.repeat == 'daily'){
+      if(item.repeat === 'daily'){
         for(let loopDate = minDate; loopDate <= maxDate; loopDate = utils.addDays(loopDate, 1)){
           thisBooking.makeBooked(utils.dateToStr(loopDate), item.hour, item.duration, item.table);
         }
@@ -235,6 +235,7 @@ class Booking {
         date: thisBooking.datePicker.value,
         hour: thisBooking.hourPicker.value,
         table: parseInt(thisBooking.selectedTable[0]),
+        repeat: false,
         duration: thisBooking.hoursAmount.value,
         ppl: thisBooking.peopleAmount.value,
         starters: [],
@@ -258,7 +259,8 @@ class Booking {
     
     fetch(url, options)
       .then(
-        thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table)
+        thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table),
+        thisBooking.updateDOM()
       );
   }
 }
