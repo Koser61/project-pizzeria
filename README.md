@@ -8,17 +8,17 @@ Live demo [_here_](https://afternoon-springs-46675.herokuapp.com/).
 
 
 ## Table of Contents
-* [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Setup](#setup)
 * [Local environment](#local-environment)
 
+
 ## Technologies Used
-- HTML
-- CSS
+- HTML5
+- CSS3
 - SCSS
-- JavaScript
+- JavaScript (ES6+)
 
 
 ## Features
