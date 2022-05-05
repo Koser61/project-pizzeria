@@ -168,6 +168,8 @@
 }
 @media only screen and (max-width: 430px) {
   .product {
+    padding: ($base-size * 4) ($base-size * 3);
+
     &__icon {
       right: -$base-size * 2;
     }
