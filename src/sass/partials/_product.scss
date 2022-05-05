@@ -14,19 +14,22 @@
     margin-bottom: ($base-size * 2);
     cursor: pointer;
   }
+
+  &__name-wrapper {
+    display: inline-flex;
+    align-items: center;
+  }
   
   &__name {
     @extend .h1;
-    text-align: center;
+    display: inline-block;
     position: relative;
   }
   
   &__icon {
-    position: absolute;
     color: $color-main;
-    right: -$base-size * 4;
-    top: $base-size;
-    font-size: ($base-size * 1.5);
+    margin-left: $base-size * 2;
+    font-size: ($base-size * 2);
     transition: $transition;
   }
   
@@ -91,9 +94,7 @@
       &.active {
         opacity: 1;
       }
-  
     }
-  
   }
   
   &.active {
@@ -108,9 +109,7 @@
     .product__icon {
       transform: rotate(180deg);
     }
-  
   }
-  
 }
   
 .widget-amount {
@@ -121,7 +120,6 @@
     margin: 0 calc($base-size / 2);
     padding: 0;
   }
-  
 }
 
 @media only screen and (max-width: 672px) {
@@ -165,41 +163,34 @@
       display: none;
     }
 
+    &__name-wrapper {
+      width: 100%;
+      @include flex(row, center, space-between);
+    }
+    
+    &__name {
+      @extend .h1;
+      display: inline-block;
+      width: fit-content;
+      position: relative;
+    }
+    
+    &__icon {
+      margin-left: $base-size * 1.5;
+    }
+
+    &__base-price {
+      display: none;
+    }
+
     &__params {
       @include flex(column, center, flex-start);
       width: auto;
     }
   }
 }
-@media only screen and (max-width: 486px) {
-  .product {
-    &__header {
-      flex-direction: column;
-    }
-  }
-}
 @media only screen and (max-width: 430px) {
   .product {
     padding: ($base-size * 3) ($base-size * 1.5);
-
-    &__icon {
-      right: -$base-size * 2;
-    }
-  }
-}
-@media only screen and (max-width: 356px) {
-  .product {
-    &__icon {
-      right: -$base-size;
-      top: $base-size * 3;
-    }
-  }
-}
-@media only screen and (max-width: 300px) {
-  .product {
-    &__icon {
-      right: -$base-size * 2;
-      top: $base-size * 3;
-    }
   }
 }
