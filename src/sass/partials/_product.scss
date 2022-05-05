@@ -124,17 +124,27 @@
   
 }
 
-@media only screen and (max-width: 604px) {
+@media only screen and (max-width: 672px) {
   .product {
     &__wrapper {
       @include flex(column-reverse, center, flex-start);
     }
 
     &__params {
-      @include flex(row, center, center);
+      @include flex(column, center, center);
 
       li {
         margin-inline: $base-size;
+      }
+    }
+
+    &__order {
+      width: fit-content;
+
+      .amount  {
+        .center  {
+          @include flex(center, center, center);
+        }
       }
     }
 

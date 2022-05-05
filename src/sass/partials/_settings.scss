@@ -70,7 +70,7 @@ $base-size: 12px;
 
 @mixin accordion-open() {
   transform: translate(0, 0);
-  max-height: 1000px;
+  max-height: 2000px;
   opacity: 1;
 }
 
