@@ -38,7 +38,7 @@
 
   &--lt {
     @include btn($color-light, $color-main, $color-light);
-    padding: 0;
+    padding: 0 !important;
     width: 24px;
     height: 18px;
     line-height: 16px;
