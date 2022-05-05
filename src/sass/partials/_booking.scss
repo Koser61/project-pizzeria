@@ -17,7 +17,7 @@
 }
   
 .booking-wrapper {
-  margin: ($base-size * 3.5) auto;
+  margin: ($base-size * 3.5) 20px;
   padding: ($base-size * 6) ($base-size * 4);
   background: $color-light;
   border-bottom: 1px solid lighten($color-dark, 70%);
@@ -228,6 +228,10 @@
 }
 
 @media only screen and (max-width: 536px) {
+  .booking-wrapper {
+    padding: ($base-size * 4) ($base-size * 3);
+  }
+
   .time-picker {
     @include flex(column, center, center);
 
@@ -238,6 +242,10 @@
   }
 }
 @media only screen and (max-width: 400px) {
+  .booking-wrapper {
+    padding: ($base-size * 3) ($base-size * 1.5);
+  }
+
   .floor-plan {
     width: 250px;
     height: 250px;
