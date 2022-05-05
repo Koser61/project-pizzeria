@@ -7,17 +7,9 @@
     display: block;
   }
 }
-  
+
 .booking-widget {
-  transform: opacity 500ms;
-  
-  &.loading {
-    opacity: 0.25;
-  }
-}
-  
-.booking-wrapper {
-  margin: ($base-size * 3.5) auto;
+  margin-block: ($base-size * 3.5);
   padding: ($base-size * 6) ($base-size * 4);
   background: $color-light;
   border-bottom: 1px solid lighten($color-dark, 70%);
@@ -27,12 +19,12 @@
 .booking-option-title {
   @extend .h2;
   display: block;
-  margin: 0 0 ($base-size * 2) 0;
+  margin: 0 0 $base-size 0;
+  text-align: center;
 
   > .widget-amount {
-    margin: ($base-size * 2) 0 0 0;
+    margin: $base-size 0 0 0;
   }
-  
 }
   
 .page__title {
@@ -54,7 +46,6 @@
     position: absolute;
     right: 0;
   }
-  
 }
   
 .rangeSlider {
@@ -79,7 +70,6 @@
       top: -6px;
       background: $color-dark;
     }
-  
   }
   
   &__fill {
@@ -154,7 +144,6 @@
       &::after {
         border-radius: 50%;
       }
-  
     }
 
     &.booked {
@@ -213,10 +202,8 @@
   @include flex(row, flex-start, space-evenly);
   flex-wrap: wrap;
   margin: ($base-size * 4) auto;
-
-  .booking-option-title {
-    margin: $base-size;
-  }
+  row-gap: ($base-size * 1.5);
+  column-gap: ($base-size * 2);
 }
 
 .order-confirmation {
@@ -229,6 +216,10 @@
 }
 
 @media only screen and (max-width: 536px) {
+  .booking-wrapper {
+    padding: ($base-size * 4) ($base-size * 3);
+  }
+
   .time-picker {
     @include flex(column, center, center);
 
@@ -239,6 +230,10 @@
   }
 }
 @media only screen and (max-width: 400px) {
+  .booking-wrapper {
+    padding: ($base-size * 3) ($base-size * 1.5);
+  }
+
   .floor-plan {
     width: 250px;
     height: 250px;

@@ -79,6 +79,7 @@
 
   &__product-header {
     @include flex(row, center, space-between);
+    text-align: start;
   }
 
   &__product-details {
@@ -88,6 +89,7 @@
       font-size: 10px;
       color: lighten($color-dark, 40%);
       text-transform: lowercase;
+      text-align: start;
       font-style: italic;
       line-height: 1.3;
       letter-spacing: 0.5px;
