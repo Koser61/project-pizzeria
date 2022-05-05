@@ -24,7 +24,7 @@ Live demo [_here_](https://afternoon-springs-46675.herokuapp.com/).
 ## Features
 - Loading products data from ***json-server*** mock API
 - Products ordering form with ingredients choice, its' visual representation and price calculation
-- Prodcts cart with sending order to ***json-server*** mock API
+- Products cart with sending order to ***json-server*** mock API
 - Table booking with validation using fetch API calls to ***json-server*** 
 
 
