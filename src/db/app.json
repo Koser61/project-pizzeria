@@ -77,6 +77,24 @@
                   }
                }
             },
+            "spices": {
+               "label": "Spices",
+               "type": "checkboxes",
+               "options": {
+                  "chilli": {
+                     "label": "Chilli pepper",
+                     "price": 1
+                  },
+                  "turmeric": {
+                     "label": "Tumeric",
+                     "price": 1
+                  },
+                  "oregano": {
+                     "label": "Oregano",
+                     "price": 1
+                  }
+               }
+            },
             "toppings": {
                "label": "Toppings",
                "type": "checkboxes",
